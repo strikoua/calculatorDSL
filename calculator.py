@@ -11,6 +11,8 @@ class Calculator:
                     num1 = b.num
                 else:
                     num2 = b.num
+                    print(num1)
+                    print(num2)
                     match operator:
                         case '+': num1 = num1 + num2
                         case '-': num1 = num1 - num2
@@ -18,6 +20,7 @@ class Calculator:
                         case '/': num1 = num1 / num2 #add result if num2 = 0
             else:
                 operator = b.operation
+                print(operator)
         print(num1)
 
 calculator_mm = metamodel_from_file('calculator.tx')

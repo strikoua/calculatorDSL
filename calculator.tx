@@ -1,5 +1,5 @@
 Expression:
-    buttons *= Button '='
+    (buttons+=NumberButton (buttons+=OperationButton buttons+=NumberButton)*)? '='
 ;
 
 Button:
@@ -7,12 +7,13 @@ Button:
 ;
 
 NumberButton:
-    num=FLOAT
+    num=NUMBER
 ;
 
 OperationButton:
     operation = Operation
 ;
+
 
 Operation:
     "+" | "-" | "*" | "/"
