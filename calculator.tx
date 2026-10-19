@@ -1,0 +1,19 @@
+Expression:
+    buttons *= Button '='
+;
+
+Button:
+    NumberButton | OperationButton
+;
+
+NumberButton:
+    num=FLOAT
+;
+
+OperationButton:
+    operation = Operation
+;
+
+Operation:
+    "+" | "-" | "*" | "/"
+; 
