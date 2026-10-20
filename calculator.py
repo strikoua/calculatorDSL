@@ -11,19 +11,21 @@ class Calculator:
                     num1 = b.num
                 else:
                     num2 = b.num
-                    print(num1)
-                    print(num2)
                     match operator:
                         case '+': num1 = num1 + num2
                         case '-': num1 = num1 - num2
                         case '*': num1 = num1 * num2
-                        case '/': num1 = num1 / num2 #add result if num2 = 0
+                        case '/': 
+                            if num2 == 0:
+                                print("Cannot divide by zero")
+                                exit()
+                            else:
+                                num1 = num1 / num2 
             else:
                 operator = b.operation
-                print(operator)
         print(num1)
 
 calculator_mm = metamodel_from_file('calculator.tx')
-calculator_model = calculator_mm.model_from_file('expression.rbt')
+calculator_model = calculator_mm.model_from_file('expression.calc')
 calculator = Calculator()
 calculator.calculate(calculator_model)                
