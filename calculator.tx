@@ -1,20 +1,35 @@
+Calculation:
+    expression = Expression '='
+;
+
 Expression:
-    (buttons+=NumberButton (buttons+=OperationButton buttons+=NumberButton)*)? '='
+    beginning = Term sum *= SumOperation
 ;
 
-Button:
-    NumberButton | OperationButton
+Term:
+    beginning = Factor prod *= MulOperation
 ;
 
-NumberButton:
-    num=NUMBER
+Factor:
+    number = NUMBER | '(' expression = Expression ')'
 ;
 
-OperationButton:
-    operation = Operation
+SumOperation:
+    operator = SumOperator term = Term
 ;
 
+MulOperation:
+    operator = MulOperator factor = Factor
+;
 
-Operation:
-    "+" | "-" | "*" | "/"
+SumOperator:
+    '+' | '-'
+;
+
+MulOperator:
+    '*' | '/'
 ; 
+
+
+
+
