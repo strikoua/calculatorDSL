@@ -2,7 +2,7 @@ from textx import metamodel_from_file
 
 class Calculator:
     def factor(self, factor):
-        if factor.expression != None:
+        if factor.expression is not None:
             return self.expression(factor.expression)
         else: return factor.number
 

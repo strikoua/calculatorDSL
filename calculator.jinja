@@ -1,0 +1,25 @@
+{%- macro factor(f) -%}
+{%- if f.expression -%}
+({{ expression(f.expression) }})
+{%- else -%}
+{{ f.number }}
+{%- endif -%}
+{%- endmacro -%}
+
+{%- macro term(t) -%}
+{{ factor(t.beginning) }}
+{%- for op in t.prod %} {{ op.operator }} {{ factor(op.factor) }}{% endfor -%}
+{%- endmacro -%}
+
+{%- macro expression(e) -%}
+{{ term(e.beginning) }}
+{%- for op in e.sum %} {{ op.operator }} {{ term(op.term) }}{% endfor -%}
+{%- endmacro -%}
+
+def calculate():
+    return {{ expression(model.expression) }}
+
+try:
+    print(calculate())
+except ZeroDivisionError:
+    print("Cannot divide by zero")
